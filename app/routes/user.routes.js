@@ -19,10 +19,4 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isAdmin],
     controller.adminBoard
   );
-
-  app.get(
-    '/api/scheduler/getDoctors',
-    [authJwt.verifyToken, authJwt.isScheduler],
-    controller.schedulerBoard
-  );
 };

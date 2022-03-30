@@ -3,7 +3,7 @@ const cors = require('cors');
 
 const app = express();
 
-var corsOptions = {
+const corsOptions = {
   origin: 'http://localhost:8081'
 };
 
@@ -29,6 +29,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/scheduler.routes')(app);
 require('./app/routes/doctor.routes')(app);
+require('./app/routes/admin.routes')(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
@@ -47,5 +48,9 @@ function initial() {
   Role.create({
     id: 3,
     name: 'doctor'
+  });
+  Role.create({
+    id: 4,
+    name: 'user'
   });
 }

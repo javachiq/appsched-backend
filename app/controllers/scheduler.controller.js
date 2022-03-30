@@ -27,7 +27,7 @@ exports.editAppointment = (req, res) => {
 
 exports.createAppointment = (req, res) => {
   const data = req.body.data;
-  Appointment.update({
+  Appointment.create({
     patient: data.patient,
     doctorId: data.doctorId,
     slot: data.slot,
