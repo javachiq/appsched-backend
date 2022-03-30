@@ -1,0 +1,40 @@
+{
+  "name": "appsched-backend",
+  "version": "1.0.0",
+  "description": "Appointment scheduler for Doctors",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js --exec \"npm run lint && node\"",
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint src/**/*.js  --fix"
+  },
+  "keywords": [
+    "node.js",
+    "jwt",
+    "authentication",
+    "express",
+    "sequelize",
+    "sqlite3"
+  ],
+  "author": "geekchiq",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.17.0",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "prettier": "^2.4.0"
+  }
+}
