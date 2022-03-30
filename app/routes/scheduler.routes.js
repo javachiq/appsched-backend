@@ -38,4 +38,10 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.isScheduler],
     controller.createAppointment
   );
+
+  app.get(
+    '/api/scheduler/getDoctors',
+    [authJwt.verifyToken, authJwt.isScheduler],
+    controller.getDoctors
+  );
 };

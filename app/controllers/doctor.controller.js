@@ -3,7 +3,6 @@ const Appointment = db.appointments;
 const Op = db.Sequelize.Op;
 
 exports.getAppointments = (req, res) => {
-  console.log(req.userId);
   Appointment.findAll({
     where: {
       doctorId: req.userId

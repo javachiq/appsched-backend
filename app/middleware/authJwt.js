@@ -4,8 +4,7 @@ const db = require('../models');
 const User = db.user;
 
 verifyToken = (req, res, next) => {
-  console.log('req-header', req.headers);
-  let token = req.headers['x-access-token'];
+  const token = req.headers['x-access-token'];
 
   if (!token) {
     return res.status(403).send({
@@ -26,11 +25,8 @@ verifyToken = (req, res, next) => {
 
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
-    console.log(user);
     user.getRoles().then(roles => {
-      console.log(roles.length);
       for (let i = 0; i < roles.length; i++) {
-        console.log('role', roles[i].name);
         if (roles[i].name === 'admin') {
           next();
           return;
@@ -40,7 +36,6 @@ isAdmin = (req, res, next) => {
       res.status(403).send({
         message: 'Require Admin Role!'
       });
-      return;
     });
   });
 };

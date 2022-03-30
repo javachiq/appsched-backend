@@ -1,5 +1,7 @@
 const db = require('../models');
 const Appointment = db.appointments;
+const Users = db.user;
+const Role = db.role;
 const Op = db.Sequelize.Op;
 
 exports.editAppointment = (req, res) => {
@@ -70,7 +72,6 @@ exports.getAppointment = (req, res) => {
 
 exports.deleteAppointment = (req, res) => {
   const data = req.body.data;
-  console.log(data);
   Appointment.destroy({
     where: {
       id: data
@@ -78,6 +79,25 @@ exports.deleteAppointment = (req, res) => {
   })
     .then(appointments => {
       res.status(200).send({ message: 'Delete Appointment Success!' });
+    })
+    .catch(err => {
+      res.status(500).send({ message: err.message });
+    });
+};
+
+exports.getDoctors = (req, res) => {
+  Users.findAll({
+    include: {
+      model: Role,
+      where: {
+        id: {
+          [Op.eq]: 3
+        }
+      }
+    }
+  })
+    .then(users => {
+      res.status(200).send(users);
     })
     .catch(err => {
       res.status(500).send({ message: err.message });
